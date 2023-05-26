@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    image: deall-technical-test:1.0 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/deall-technical-test
+      - SECRET_KEY=deall-technical-test
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
